@@ -1,9 +1,9 @@
 export interface Pessoas{
-    Codigo?: number;
-    Nome: string;
-    DataNascimento: string;
-    Inativo: number;
-    Nacionalidade: number;
-    RG?: string;
-    Passaport?: string;
+    codigo?: number;
+    nome: string;
+    dataNascimento: string;
+    inativo: boolean;
+    nacionalidade: number;
+    rg: string;
+    passaporte: string;
 }

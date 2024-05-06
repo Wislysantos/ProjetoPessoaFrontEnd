@@ -1,0 +1,39 @@
+<div>
+    <h1>Detalhes Funcionario</h1>
+</div>
+
+<div *ngIf="pessoa">
+    <form >
+        <div>
+            <label>Nome:</label>
+            <input type="text" value="{{pessoa.nome}}" disabled>
+        </div>
+        <div>
+            <label>Data Nascimento:</label>
+            <input type="text" value="{{pessoa.dataNascimento}}" disabled>
+        </div>
+        <div>
+            <label>Inativo:</label>
+            <input type="text" value="{{pessoa.inativo == true ? 'Ativo' : 'Inativo'}}" disabled>
+        </div>
+        <div>
+            <label>Nacionalidade:</label>
+            <input type="text" value="{{pessoa.nacionalidade}}" disabled>
+        </div>
+        <div *ngIf="pessoa.nacionalidade == 1; else nacionalidade">
+            <label>RG:</label>
+            <input type="text" value="{{pessoa.rg}}" disabled>
+        </div>
+        <ng-template #nacionalidade>
+            <div>
+                <label>Passaporte:</label>
+                <input type="text" value="{{pessoa.passaporte}}" disabled>
+            </div>
+        </ng-template>
+        
+        <div class="btn-box">
+            <button routerLink="">Voltar</button>
+        </div>
+    </form>
+
+</div>

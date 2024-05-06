@@ -1,5 +1,5 @@
 <div class="pessoa-box">
-    <button>Cadastrar novo pessoa</button>
+    <button routerLink="/cadastro">Cadastrar novo pessoa</button>
     <div class="input-box">
         <label >Procurar</label>
         <input type="text" placeholder="Qual registro esta buscando?" (input)="pesquisar($event)">
@@ -20,18 +20,18 @@
     </thead>
     <tbody *ngFor="let pessoa of pessoas">
         <tr>
-            <td>{{pessoa.Nome}}</td>
-            <td>{{pessoa.DataNascimento}}</td>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.dataNascimento}}</td>
             <td>
-                <div *ngIf="pessoa.Inativo == 1; else inativo">
+                <div *ngIf="pessoa.inativo == true; else inativo">
                     <img src="assets/images/Ativo.png" alt="" style="height: 20px; height: 20px;">
                 </div>
                 <ng-template #inativo>
                     <img src="assets/images/Inativo.png" alt="" style="height: 20px; height: 20px;">
                 </ng-template>
             </td>
-            <td><button>Editar</button></td>
-            <td><button>Detalhes</button></td>
+            <td><button routerLink="/editar/{{pessoa.codigo}}">Editar</button></td>
+            <td><button routerLink="/detalhes/{{pessoa.codigo}}">Detalhes</button></td>
             <td><button>Excluir</button></td>
         </tr>
     </tbody>

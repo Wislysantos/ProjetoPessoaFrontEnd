@@ -15,15 +15,15 @@ export class HomeComponent implements OnInit{
   constructor(private pessoaService : PessoaService){  }
 
   ngOnInit(): void {
-    this.pessoaService.GetPessoas().subscribe(data =>{
-      const dados = data;
-
+    this.pessoaService.GetPessoas().subscribe((data) =>{
+      const dados = data.dados;
+      //console.log(dados)
       dados.map((pessoa)=>{
-        pessoa.DataNascimento = new Date(pessoa.DataNascimento!).toLocaleDateString('pt-BR');
-      })
+        pessoa.dataNascimento = new Date(pessoa.dataNascimento!).toLocaleDateString('pt-BR');
+      });
+      this.pessoas = dados;
+      this.pessoasGeral = dados;
       
-      this.pessoas = data;
-      this.pessoasGeral = data;
     })
   }
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit{
     const value = targe.value.toLowerCase();
 
     this.pessoas = this.pessoasGeral.filter(pessoa =>{
-      return pessoa.Nome.toLowerCase().includes(value);
+      return pessoa.nome.toLowerCase().includes(value);
     })
   }
 
